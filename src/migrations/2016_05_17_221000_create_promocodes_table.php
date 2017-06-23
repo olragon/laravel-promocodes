@@ -20,7 +20,7 @@ class CreatePromocodesTable extends Migration
             $table->string('code', 32)->unique();
             $table->double('reward', 10, 2)->nullable();
 
-            $table->json('data')->nullable();
+            $table->longText('data')->default('');
 
             $table->boolean('is_used')->default(false);
 
