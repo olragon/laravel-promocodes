@@ -23,6 +23,7 @@ class Promocode extends Model
         'code',
         'reward',
         'is_used',
+        'data',
     ];
 
     /**
