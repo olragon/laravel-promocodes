@@ -46,6 +46,28 @@ class Promocode extends Model
 
         $this->table = config('promocodes.table', 'promocodes');
     }
+    
+    /**
+     * Simulate json column by getter
+     * @param $data
+     */    
+    public function getDataAttribute($data)
+    {
+        return collect(json_decode($data,true));
+    }
+
+    /**
+     * Simulate json column by setter
+     *
+     * @param $data
+     *
+     * @return mixed
+     */
+    public function setDataAttribute($data)
+    {
+        $data = (is_array($data) || is_object($data)) ? json_encode($data) : $data;
+        return $this->attributes['data'] = $data;
+    }
 
     /**
      * Get the user who owns the promocode.
